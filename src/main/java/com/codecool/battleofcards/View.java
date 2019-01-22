@@ -28,6 +28,9 @@ public class View {
         return scanner.nextInt();
 
     }
+    public  void  taFunckjaNicNIeRobi(){
+        
+    }
 
     public void displayMenu() {
         System.out.println("                              `                  0\n" +
