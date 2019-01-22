@@ -24,7 +24,6 @@ public class Player {
     }
 
     public boolean checkIfEmpty() {
-         
         if (cards.size() > 0) {
             return false;
         }
