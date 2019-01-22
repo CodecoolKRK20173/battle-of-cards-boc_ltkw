@@ -1,4 +1,4 @@
-package com.codecool.battleofcards.models;
+package com.codecool.battleofcards;
 
 import java.util.ArrayList;
 import java.util.Collections;
