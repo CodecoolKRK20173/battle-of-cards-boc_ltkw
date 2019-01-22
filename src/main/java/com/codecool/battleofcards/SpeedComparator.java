@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public class SpeedComparator implements Comparator<Card> {
 
-    @Override
+    //@Override
     public int compare(Card playerOneCard, Card playerTwoCard) {
         return (playerOneCard.getSpeed() - playerTwoCard.getSpeed());
     }

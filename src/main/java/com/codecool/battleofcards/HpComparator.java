@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public class HpComparator implements Comparator<Card> {
 
-    @Override
+    //@Override
     public int compare(Card playerOneCard, Card playerTwoCard) {
         return (playerOneCard.getHp() - playerTwoCard.getHp());
     }
