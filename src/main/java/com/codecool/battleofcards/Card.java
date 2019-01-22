@@ -1,12 +1,12 @@
 public class Card {
-    private String id;
+    private int id;
     private String name;
     private int attack;
     private int defense;
     private int hp;
     private int speed;
 
-    public Card(String id, String name, int attack, int defense, int hp, int speed) {
+    public Card(int id, String name, int attack, int defense, int hp, int speed) {
         this.id = id;
         this.name = name;
         this.attack = attack;
@@ -15,7 +15,7 @@ public class Card {
         this.speed = speed;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
