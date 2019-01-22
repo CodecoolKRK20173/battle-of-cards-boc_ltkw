@@ -1,16 +1,17 @@
+package com.codecool.battleofcards;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class Dao {
     private Card card;
     private List<Card> cards;
     private ArrayList<ArrayList<String>> cardInformation = new ArrayList<ArrayList<String>>();
-    private String filePath = "/home/tatiana/codecool/Java/4_TW_week/check/Pokemons.csv";
+    private String filePath = "Pokemons.csv";
 
     public Dao() {
         cards = new ArrayList<Card>();
@@ -19,7 +20,9 @@ public class Dao {
     public void readCSV(String fileName) {
         Scanner openFile = null;
         try {
-            openFile = new Scanner(new File(fileName));
+            ClassLoader loader = getClass().getClassLoader();
+            File file = new File(loader.getResource(fileName).getFile());
+            openFile = new Scanner(file);
             openFile.useDelimiter("\n");
 
         } catch(FileNotFoundException error){

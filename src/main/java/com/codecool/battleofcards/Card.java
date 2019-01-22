@@ -1,3 +1,5 @@
+package com.codecool.battleofcards;
+
 public class Card {
     private int id;
     private String name;
