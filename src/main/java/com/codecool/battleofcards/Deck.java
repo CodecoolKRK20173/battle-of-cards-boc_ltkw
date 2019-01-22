@@ -6,9 +6,10 @@ import java.util.ArrayList;
 public class Deck {
 
     private List<Card> cards;
+    private Dao dao;
 
     public Deck() {
-        cards = new ArrayList<Card>();
+        cards = dao.getCards();
     }
 
     public List<Card> getCards() {
