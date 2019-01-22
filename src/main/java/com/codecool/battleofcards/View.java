@@ -1,3 +1,5 @@
+package com.codecool.battleofcards;
+
 import java.util.Scanner;
 
 public class View {
@@ -17,6 +19,6 @@ public class View {
     }
 
     public String printText() {
-        
+
     }
 }

@@ -1,3 +1,5 @@
+package com.codecool.battleofcards;
+
 import java.util.List;
 
 public class Table {
@@ -17,6 +19,6 @@ public class Table {
     }
 
     public boolean compareStats() {
-        
+
     }
 }

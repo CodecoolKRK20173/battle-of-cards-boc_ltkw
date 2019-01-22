@@ -1,3 +1,5 @@
+package com.codecool.battleofcards;
+
 import java.util.List;
 
 public class Player {
@@ -21,6 +23,6 @@ public class Player {
     }
 
     public boolean checkIfEmpty() {
-        
+
     }
 }

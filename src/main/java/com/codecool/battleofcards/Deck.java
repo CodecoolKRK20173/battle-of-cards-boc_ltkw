@@ -1,3 +1,5 @@
+package com.codecool.battleofcards;
+
 import java.util.List;
 
 public class Deck {
@@ -17,6 +19,6 @@ public class Deck {
     }
 
     public List<Card> getCards() {
-        
+
     }
 }

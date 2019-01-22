@@ -1,3 +1,5 @@
+package com.codecool.battleofcards;
+
 public class Dealer {
 
     private Table table;
