@@ -21,3 +21,12 @@ printStatistics​ in ​Step 4​).
  - Use Git​ to version your application’s source code - commit frequently and small, well-defined changes.
  - Create a Main class, with a ​main​ method.
  - You cannot use static variables or methods​ ​(except the ​main​ method). Create instances of your classes instead.
+##__Explanation of CSV__
+Pokemon.csv columns:
+1.ID
+2.Name
+3.Height(cm)
+4.Weight(kg)
+5.Catch rate
+6.Base experience yield(score)
+
