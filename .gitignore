@@ -1,4 +1,14 @@
+# Compiled source
+
 *.class
+
+# Target folder of maven
+
+target/
+
+# Miscellaneous
+
 *.settings
 *.classpath
 *.project
+*.pdf
