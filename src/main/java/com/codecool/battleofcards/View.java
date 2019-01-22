@@ -15,7 +15,7 @@ public class View {
                         "|####|                     | \n"+
                         "|####| HP          : %-5s | \n"+
                         "|####|                     | \n"+
-                        "|####| inteligence : %-5s | \n"+
+                        "|####| speed       : %-5s | \n"+
                         "|####|                     | \n"+
                         "+====+=====================+%n";
         System.out.format(leftAlignFormat, name ,attack, defence, HP, inteligence);
@@ -28,9 +28,7 @@ public class View {
         return scanner.nextInt();
 
     }
-    public  void  taFunckjaNicNIeRobi(){
 
-    }
 
     public void displayMenu() {
         System.out.println("                              `                  0\n" +
