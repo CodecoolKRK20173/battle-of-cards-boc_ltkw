@@ -23,13 +23,13 @@ public class Table {
     public int compareStats(Card playerOneCard, Card playerTwoCard, StatEnum stat) {
         StatComparator comparator = new StatComparator();
         switch (stat) {
-            case Attack:
+            case ATTACK:
                 return comparator.compare(playerOneCard.getAttack(), playerTwoCard.getAttack());
-            case Defense:
+            case DEFENSE:
                 return comparator.compare(playerOneCard.getdefense(), playerTwoCard.getdefense());
-            case Hp:
+            case HP:
                 return comparator.compare(playerOneCard.getHp(), playerTwoCard.getHp());
-            case Speed:
+            case SPEED:
                 return comparator.compare(playerOneCard.getSpeed(), playerTwoCard.getSpeed());
             default:
                 return 0;
