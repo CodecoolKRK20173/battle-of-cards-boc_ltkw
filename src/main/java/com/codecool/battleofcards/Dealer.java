@@ -1,4 +1,4 @@
-package com.codecool.battleofcards;
+package com.codecool.battleofcards; // FIXME: change when Dealer is moved to battleofcards.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,13 +18,8 @@ public class Dealer {
         playerTwoHand = new ArrayList<Card>();
     }
 
-    /**
-     * deals the deck for both players
-     * 
-     * @param shuffledDeck
-     */
-    public void dealCards(List<Card> shuffledDeck) {
-        shuffledDeck = getShuffledDeck();
+    public void dealCards() {
+        List<Card> shuffledDeck = getShuffledDeck();
         int startPoint = 0;
         int midPoint = shuffledDeck.size() / 2;
         int endPoint = shuffledDeck.size();
@@ -38,9 +33,9 @@ public class Dealer {
      * @return deck shuffled randomly
      */
     private List<Card> getShuffledDeck() {
-        List<Card> shuffledDeck = deck.getCards();
-        Collections.shuffle(shuffledDeck);
-        return shuffledDeck;
+        List<Card> arrangedDeck = deck.getCards();
+        Collections.shuffle(arrangedDeck);
+        return arrangedDeck;
     }
 
     /**
