@@ -46,7 +46,8 @@ public class Dealer {
      * @param shuffledDeck
      * @return boolean
      */
-    public boolean isDeckSizeEven(List<Card> shuffledDeck) {
+    public boolean isDeckSizeEven() {
+        List<Card> shuffledDeck = getShuffledDeck();
         if (shuffledDeck.size() % 2 == 0) {
             return true;
         }
