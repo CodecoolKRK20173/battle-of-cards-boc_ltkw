@@ -36,7 +36,6 @@ public class Dao {
                 row.add(column);
             }
             cardInformation.add(row);
-            System.out.println(row);
         }
         openFile.close();
     }
