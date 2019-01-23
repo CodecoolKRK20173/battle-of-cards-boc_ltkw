@@ -29,4 +29,8 @@ public class Player {
         }
         return true;
     }
+
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
+    }
 }

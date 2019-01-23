@@ -3,19 +3,20 @@ package com.codecool.battleofcards;
 import java.util.Scanner;
 
 public class View {
+    
 
     public void displayCard (String name, int attack, int defence, int HP, int inteligence) {
         String leftAlignFormat =
                 "+====+=====================+\n"+
                         "|@@@@|                     | \n"+
                         "|@@@@| name : %-5s        | \n"+ "+====+=====================+\n"+
-                        "|####| attack      : %-5s | \n"+
+                        "|####| 1.attack     : %-5s | \n"+
                         "|####|                     | \n"+
-                        "|####| defence     : %-5s | \n"+
+                        "|####| 2.defence    : %-5s | \n"+
                         "|####|                     | \n"+
-                        "|####| HP          : %-5s | \n"+
+                        "|####| 3.HP         : %-5s | \n"+
                         "|####|                     | \n"+
-                        "|####| speed       : %-5s | \n"+
+                        "|####| 4.speed      : %-5s | \n"+
                         "|####|                     | \n"+
                         "+====+=====================+%n";
         System.out.format(leftAlignFormat, name ,attack, defence, HP, inteligence);
@@ -23,9 +24,9 @@ public class View {
 
     }
 
-    public int getUserInput() {
+    public char getUserInput() {
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        return scanner.next().charAt(0);
 
     }
 
@@ -53,5 +54,10 @@ public class View {
     public String printText(String yourText) {
         return yourText.toString();
 
+    }
+
+    public void clearScreen() {
+		System.out.print("\033[H\033[2J");
+        System.out.flush();    
     }
 }

@@ -11,13 +11,25 @@ public class Table {
     private Deck deck;
     private List<Card> drawedCards;
     private List<Card> currentlyPlayedCards;
+    private Dealer dealer;
 
     public Table() {
         playerOne = new Player();
         playerTwo = new Player();
         drawedCards = new ArrayList<Card>();
         currentlyPlayedCards = new ArrayList<Card>();
+        dealer = new Dealer();
+        dealCardsToPlayers();
+    }
+    public Player getPlayerOne(){
+        return playerOne;
+    }
+    public Player getPlayerTwo (){
+        return playerTwo;
+    }
 
+    public boolean checkIfDeckIsEven(){
+        return dealer.isDeckSizeEven();
     }
 
     public int compareStats(Card playerOneCard, Card playerTwoCard, StatEnum stat) {
@@ -36,5 +48,33 @@ public class Table {
                 
 
         }
+    }
+
+    public void dealCardsToPlayers() {
+        dealer.dealCards();
+        playerOne.setCards(dealer.getPlayerOneHand());
+        playerTwo.setCards(dealer.getPlayerTwoHand());
+    }
+
+    public void addCardToTheBottom(List<Card> cards, Player player) {
+        for(Card card : cards) {
+            player.addCardToTheBottom(card);
+        }
+        
+    }
+
+    public boolean isDeckEmpty() {
+        if (drawedCards.isEmpty()) {
+            return true;
+        }
+        return false;
+    }
+
+    public List<Card> getDrawedCards() {
+        return drawedCards;
+    }
+
+    public void clearDrawCards() {
+        drawedCards.clear();
     }
 }
