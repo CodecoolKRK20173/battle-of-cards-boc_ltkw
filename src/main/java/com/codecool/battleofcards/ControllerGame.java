@@ -40,46 +40,50 @@ public class ControllerGame {
         }
     }
 
-    public void run(){
+    public void run() {
         View view = new View();
         view.printText("Welcome to Card battle: Pokemon! what you want to do?");
         view.displayMenu();
-    
+
         boolean applicationStarted = true;
+        boolean gameIsPlayed = true;
 
         while (applicationStarted) {
             char choice = view.getUserInput();
-            
             if (choice == '1' && table.checkIfDeckIsEven()) {//add condition if listOfPlayer is empty
-                currentPlayer.getTopCard().cardToString();//get card of second Player
-                Card playerOneCard = currentPlayer.getTopCard();
-                Card playerTwoCard = otherPlayer.getTopCard();
-                view.printText("Please select your attribute:");
-                StatEnum input = getValidatedInput();
-                int compareResult = table.compareStats(playerOneCard, playerTwoCard, input);
-                if (compareResult < 0) {
-                    view.printText("Player Two wins");
-                    otherPlayer.addCardToTheBottom(playerOneCard);
-                    otherPlayer.addCardToTheBottom(playerTwoCard);
-                    if (!table.isDrawedCardsEmpty()) {
-                        table.addCardToTheBottom(table.getDrawedCards(), otherPlayer);
-                        table.clearDrawCards();
+                while(gameIsPlayed) {
+                    view.printText(currentPlayer.
+                    view.printText(currentPlayer.getTopCard().cardToString());//get card of second Player
+                    Card playerOneCard = currentPlayer.getTopCard();
+                    Card playerTwoCard = otherPlayer.getTopCard();
+                    view.printText("Please select your attribute:");
+                    StatEnum input = getValidatedInput();
+                    int compareResult = table.compareStats(playerOneCard, playerTwoCard, input);
+                    if (compareResult < 0) {
+                        view.printText("Player Two wins");
+                        otherPlayer.addCardToTheBottom(playerOneCard);
+                        otherPlayer.addCardToTheBottom(playerTwoCard);
+                        if (!table.isDrawedCardsEmpty()) {
+                            table.addCardToTheBottom(table.getDrawedCards(), otherPlayer);
+                            table.clearDrawCards();
+                        }
+                    } else if (compareResult > 0) {
+                        view.printText("Player One wins");
+                        currentPlayer.addCardToTheBottom(playerTwoCard);
+                        currentPlayer.addCardToTheBottom(playerOneCard);
+                        if (!table.isDrawedCardsEmpty()) {
+                            table.addCardToTheBottom(table.getDrawedCards(), currentPlayer);
+                            table.clearDrawCards();
+                        }
+                    } else if (compareResult == 0) {
+                        view.printText("It's a draw!");
+                        table.addCardToDrawedCards(playerOneCard);
+                        table.addCardToDrawedCards(playerTwoCard);
                     }
-                } else if (compareResult > 0) {
-                    view.printText("Player One wins");
-                    currentPlayer.addCardToTheBottom(playerTwoCard);
-                    currentPlayer.addCardToTheBottom(playerOneCard);
-                    if (!table.isDrawedCardsEmpty()) {
-                        table.addCardToTheBottom(table.getDrawedCards(), currentPlayer);
-                        table.clearDrawCards();
-                    }
-                } else if (compareResult == 0){
-                    view.printText("It's a draw!");
-                    table.addCardToDrawedCards(playerOneCard);
-                    table.addCardToDrawedCards(playerTwoCard);
+                    switchPlayer();
                 }
-                switchPlayer();
             } else if (choice == '2') {
+
 
             } else if (choice == '3') {
                 System.exit(0);
