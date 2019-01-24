@@ -2,7 +2,6 @@ package com.codecool.battleofcards; // FIXME: change when Dealer is moved to bat
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import com.codecool.battleofcards.Card; // FIXME: change when Card is moved to model.Card;
 import com.codecool.battleofcards.Deck; // FIXME: changle when Deck is moved to model.Deck;
