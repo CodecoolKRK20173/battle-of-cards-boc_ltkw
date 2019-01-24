@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.codecool.battleofcards.model.Card;
 import com.codecool.battleofcards.controller.Player;
+import com.codecool.battleofcards.container.SoundContainer;
 import com.codecool.battleofcards.model.StatEnum;
 import com.codecool.battleofcards.service.Table;
 import com.codecool.battleofcards.view.View;
@@ -11,6 +12,7 @@ import com.codecool.battleofcards.view.View;
 public class ControllerGame {
     View view = new View();
     Table table = new Table();
+    SoundContainer sound = new SoundContainer();
     Player currentPlayer = table.getPlayerOne();
     Player otherPlayer = table.getPlayerTwo();
     boolean isRunning = true;
@@ -59,6 +61,7 @@ public class ControllerGame {
         View view = new View();
         view.clearScreen();
         view.displayMenu();
+        sound.playBackgroundSound();
         while (isRunning) {
             char choice = view.getUserInput();
             if (choice == '1' && table.checkIfDeckIsEven()) {
@@ -103,14 +106,23 @@ public class ControllerGame {
                     view.clearScreen();
                 }
             } else if (choice == '2') {
+                sound.stopClip();
                 view.displayAuthors();
+                sound.playAutorsScreenMusic();
                 char backChoice = view.getUserInput();
-                if (backChoice == '1'){
+                if (backChoice == '1') {
+                    sound.stopClip();
                     playGame();
-                } else if (backChoice == '2'){
+                } else if (backChoice == '2') {
+                    sound.stopClip();
+                    sound.playGoodBye();
+                    holdForMilisecond(9000);
                     System.exit(0);
                 }
             } else if (choice == '3') {
+                sound.stopClip();
+                sound.playGoodBye();
+                holdForMilisecond(9000);
                 System.exit(0);
 
             }
@@ -137,11 +149,15 @@ public class ControllerGame {
     public void displayWinMessage(int result) {
         switch (result) {
             case 1: 
+                sound.stopClip();
+                sound.playWinSound();
                 view.printWinState();
                 holdForMilisecond(5000);
                 playGame();
                 break;
             case 2:
+                sound.stopClip();
+                sound.playGameOverSound();
                 view.printGameOver();
                 holdForMilisecond(5000);
                 playGame();
