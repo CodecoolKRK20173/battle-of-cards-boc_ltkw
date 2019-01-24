@@ -1,6 +1,8 @@
 package com.codecool.battleofcards;
 
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class View {
     
@@ -32,18 +34,7 @@ public class View {
 
 
     public void displayMenu() {
-        System.out.println("                              `                  0\n" +
-                "  .:XHHHHk.              db.   .;;.     dH  MX   0\n" +
-                "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN\n" +
-                "QMMMMMb  \"MMX       MMMMMMP !MX' :M~   MMM MMM  .oo. XMMM 'MMM\n" +
-                "  `MMMM.  )M> :X!Hk. MMMM   XMM.o\"  .  MMMMMMM X?XMMM MMM>!MMP\n" +
-                "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM `\" MX MMXXMM\n" +
-                "    ~MMMMM~ XMM. .XM XM`\"MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP\n" +
-                "     ?MMM>  YMMMMMM! MM   `?MMRb.    `\"\"\"   !L\"MMMMM XM IMMM\n" +
-                "      MMMX   \"MMMM\"  MM       ~%:           !Mh.\"\"\" dMI IMMP\n" +
-                "      'MMM.                                             IMX\n" +
-                "       ~M!M                                             IMP");
-
+        printLogo();
         System.out.println("Welcome to Pokemon cards game!");
         System.out.println( "1. Start game\n"+
                             "2. Show authors\n"+
@@ -59,5 +50,73 @@ public class View {
     public void clearScreen() {
 		System.out.print("\033[H\033[2J");
         System.out.flush();    
+    }
+
+    private void printLogo() {
+        Scanner logoTop = null;
+        Scanner pikachuLogoBottom = null;
+        String logo = "";
+
+        try {
+            logoTop = new Scanner(new File("logoTop.txt"));
+            pikachuLogoBottom = new Scanner(new File("pikachuLogoBottom.txt"));
+        } catch (FileNotFoundException e) {
+            printText(e.getMessage());
+        }
+
+        while (logoTop.hasNext()) {
+            logo += "\u001B[91m" + logoTop.nextLine() + "\u001B[0m" + "\n";
+        }
+        while (pikachuLogoBottom.hasNext()) {
+            logo += "\u001B[93m" + pikachuLogoBottom.nextLine() + "\u001B[0m" + "\n";
+        }
+        printText(logo);
+    }
+
+    public void printWinState() {
+        Scanner pikachuWinTop = null;
+        Scanner pikahchuWinTextBottom = null;
+        String logo = "";
+
+        try {
+            pikachuWinTop = new Scanner(new File("pikachuWinTop.txt"));
+            pikahchuWinTextBottom = new Scanner(new File("pikachuWinTextBottom.txt"));
+        } catch (FileNotFoundException e) {
+            printText(e.getMessage());
+        }
+
+        while (pikachuWinTop.hasNext()) {
+            logo += "\u001B[93m" + pikachuWinTop.nextLine() + "\u001B[0m" + "\n";
+        }
+        while (pikahchuWinTextBottom.hasNext()) {
+            logo += "\u001B[94m" + pikahchuWinTextBottom.nextLine() + "\u001B[0m" + "\n";
+        }
+        printText(logo);
+    }
+
+    public void printGameOver() {
+        Scanner gameOverTop = null;
+        Scanner gameOverLogoTop = null;
+        Scanner gameOverLogoBottom = null;
+        String logo = "";
+
+        try {
+            gameOverTop = new Scanner(new File("gameOverVenusaurTop.txt"));
+            gameOverLogoTop = new Scanner(new File("gameOverLogoTop.txt"));
+            gameOverLogoBottom = new Scanner(new File("gameOverLogoBottom.txt"));
+        } catch (FileNotFoundException e) {
+            printText(e.getMessage());
+        }
+
+        while (gameOverTop.hasNext()) {
+            logo += "\u001B[32m" + gameOverTop.nextLine() + "\u001B[0m" + "\n";
+        }
+        while (gameOverLogoTop.hasNext()) {
+            logo += "\u001B[93m" + gameOverLogoTop.nextLine() + "\u001B[0m" + "\n";
+        }
+        while (gameOverLogoBottom.hasNext()) {
+            logo += "\u001B[91m" + gameOverLogoBottom.nextLine() + "\u001B[0m" + "\n";
+        }
+        printText(logo);
     }
 }
