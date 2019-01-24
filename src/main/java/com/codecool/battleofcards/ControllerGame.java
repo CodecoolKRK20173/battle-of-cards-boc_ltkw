@@ -5,7 +5,6 @@ import java.util.concurrent.TimeUnit;
 public class ControllerGame {
     View view = new View();
     Table table = new Table();
-    Card card;
     Player currentPlayer = table.getPlayerOne();
     Player otherPlayer = table.getPlayerTwo();
     boolean isRunning = true;
