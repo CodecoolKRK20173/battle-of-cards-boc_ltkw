@@ -8,6 +8,8 @@ public class ControllerGame {
     Card card;
     Player currentPlayer = table.getPlayerOne();
     Player otherPlayer = table.getPlayerTwo();
+    boolean isRunning = true;
+    boolean gameIsPlayed = true;
 
     private StatEnum getValidatedInput() {
 
@@ -44,13 +46,10 @@ public class ControllerGame {
 
     public void run() {
         View view = new View();
+        view.clearScreen();
         view.printText("Welcome to Card battle: Pokemon! what you want to do?");
         view.displayMenu();
-
-        boolean applicationStarted = true;
-        boolean gameIsPlayed = true;
-
-        while (applicationStarted) {
+        while (isRunning) {
             char choice = view.getUserInput();
             if (choice == '1' && table.checkIfDeckIsEven()) {//add condition if listOfPlayer is empty
                 view.clearScreen();
@@ -81,6 +80,8 @@ public class ControllerGame {
                         holdForMilisecond(2000);
                         table.addCurrentlyPlayedCardsToDrawedCards();
                     }
+                    int gameOver = checkIfGameOver();
+                    displayWinMessage(gameOver);
                     switchPlayer();
                     view.clearScreen();
                 }
@@ -101,5 +102,34 @@ public class ControllerGame {
 			System.out.println();
 		}
 	}
+
+    public int checkIfGameOver() {
+        if (currentPlayer.checkIfEmpty()) {
+            return 2;
+        } else if (otherPlayer.checkIfEmpty()) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public void displayWinMessage(int result) {
+        switch (result) {
+            case 1: 
+                view.printWinState();
+                holdForMilisecond(5000);
+                playGame();
+                break;
+            case 2:
+                view.printGameOver();
+                holdForMilisecond(5000);
+                playGame();
+                break;
+        }
+    }
+    public void playGame() {
+        ControllerGame controllerGame = new ControllerGame();
+        controllerGame.run();
+    }
 }
+
 
