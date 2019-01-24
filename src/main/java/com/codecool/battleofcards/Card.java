@@ -44,16 +44,16 @@ public class Card {
     public String cardToString () {
         String leftAlignFormat =
                 "+====+=====================+\n"+
-                        "|@@@@|                     | \n"+
-                        "|@@@@| name : %-5s        | \n"+ "+====+=====================+\n"+
-                        "|####| 1.attack     : %-5s | \n"+
-                        "|####|                     | \n"+
-                        "|####| 2.defense    : %-5s | \n"+
-                        "|####|                     | \n"+
-                        "|####| 3.HP         : %-5s | \n"+
-                        "|####|                     | \n"+
-                        "|####| 4.speed      : %-5s | \n"+
-                        "|####|                     | \n"+
+                        "|@@@@|                      \n"+
+                        "|@@@@| name : %-5s         \n"+ "+====+=====================+\n"+
+                        "|####| 1.attack     : %-5s  \n"+
+                        "|####|                      \n"+
+                        "|####| 2.defense    : %-5s  \n"+
+                        "|####|                      \n"+
+                        "|####| 3.HP         : %-5s  \n"+
+                        "|####|                      \n"+
+                        "|####| 4.speed      : %-5s  \n"+
+                        "|####|                      \n"+
                         "+====+=====================+%n";
         return String.format(leftAlignFormat, name ,attack, defense, hp, speed);
 

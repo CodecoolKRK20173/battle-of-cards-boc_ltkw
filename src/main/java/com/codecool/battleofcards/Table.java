@@ -63,7 +63,7 @@ public class Table {
         
     }
 
-    public boolean isDeckEmpty() {
+    public boolean isDrawedCardsEmpty() {
         if (drawedCards.isEmpty()) {
             return true;
         }
@@ -76,5 +76,9 @@ public class Table {
 
     public void clearDrawCards() {
         drawedCards.clear();
+    }
+
+    public void addCardToDrawedCards(Card card) {
+        drawedCards.add(card);
     }
 }
