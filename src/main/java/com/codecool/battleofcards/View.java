@@ -60,8 +60,8 @@ public class View {
         String logo = "";
 
         try {
-            logoTop = new Scanner(new File("logoTop.txt"));
-            pikachuLogoBottom = new Scanner(new File("pikachuLogoBottom.txt"));
+            logoTop = new Scanner(new File("src/main/resources/logoTop.txt"));
+            pikachuLogoBottom = new Scanner(new File("src/main/resources/pikachuLogoBottom.txt"));
         } catch (FileNotFoundException e) {
             printText(e.getMessage());
         }
@@ -81,8 +81,8 @@ public class View {
         String logo = "";
 
         try {
-            pikachuWinTop = new Scanner(new File("pikachuWinTop.txt"));
-            pikahchuWinTextBottom = new Scanner(new File("pikachuWinTextBottom.txt"));
+            pikachuWinTop = new Scanner(new File("src/main/resources/pikachuWinTop.txt"));
+            pikahchuWinTextBottom = new Scanner(new File("src/main/resources/pikachuWinTextBottom.txt"));
         } catch (FileNotFoundException e) {
             printText(e.getMessage());
         }
@@ -103,9 +103,9 @@ public class View {
         String logo = "";
 
         try {
-            gameOverTop = new Scanner(new File("gameOverVenusaurTop.txt"));
-            gameOverLogoTop = new Scanner(new File("gameOverLogoTop.txt"));
-            gameOverLogoBottom = new Scanner(new File("gameOverLogoBottom.txt"));
+            gameOverTop = new Scanner(new File("src/main/resources/gameOverVenusaurTop.txt"));
+            gameOverLogoTop = new Scanner(new File("src/main/resources/gameOverLogoTop.txt"));
+            gameOverLogoBottom = new Scanner(new File("src/main/resources/gameOverLogoBottom.txt"));
         } catch (FileNotFoundException e) {
             printText(e.getMessage());
         }
