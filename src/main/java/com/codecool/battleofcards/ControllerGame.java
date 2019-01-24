@@ -37,18 +37,18 @@ public class ControllerGame {
         }
     }
 
-    public void run(){
+    public void run() {
         View view = new View();
         view.printText("Welcome to Card battle: Pokemon! what you want to do?");
         view.displayMenu();
-    
+
         boolean applicationStarted = true;
 
         while (applicationStarted) {
             char choice = view.getUserInput();
-            
+
             if (choice == '1' && table.checkIfDeckIsEven()) {//add condition if listOfPlayer is empty
-                System.out.println(currentPlayer.getTopCard().cardToString());//get card of second Player
+                view.printText(currentPlayer.getTopCard().cardToString());//get card of second Player
                 Card playerOneCard = table.getPlayerOne().getTopCard();
                 Card playerTwoCard = table.getPlayerTwo().getTopCard();
                 view.printText("Please select your attribute:");
@@ -70,14 +70,15 @@ public class ControllerGame {
                         table.addCardToTheBottom(table.getDrawedCards(), table.getPlayerOne());
                         table.clearDrawCards();
                     }
-                } else if (compareResult == 0){
+                } else if (compareResult == 0) {
                     view.printText("It's a draw!");
                     table.addCardToDrawedCards(playerOneCard);
                     table.addCardToDrawedCards(playerTwoCard);
                 }
-            }
-            switchPlayer();
+
+                switchPlayer();
             } else if (choice == '2') {
+
 
             } else if (choice == '3') {
                 System.exit(0);
@@ -85,4 +86,5 @@ public class ControllerGame {
             }
         }
     }
+}
 
