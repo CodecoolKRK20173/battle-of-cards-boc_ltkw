@@ -4,6 +4,7 @@ public class ControllerGame {
     View view = new View();
     Table table = new Table();
     Card card;
+    Player currentPlayer = table.getPlayerOne();
 
     private StatEnum getValidatedInput() {
 
@@ -28,19 +29,11 @@ public class ControllerGame {
         return null;
     }
 
-    private void switchRound() {
-        boolean gameIsRunning = true;        
-        int player = 1;
-        while (gameIsRunning) {
-            switch(player) {
-                case 1:
-
-                    player = 2;
-                case 2:
-
-                    player = 1;
-
-            }
+    public void switchPlayer() {
+        if (currentPlayer.equals(table.getPlayerOne())) {
+            currentPlayer = table.getPlayerTwo();
+        } else {
+            currentPlayer = table.getPlayerOne();
         }
     }
 
@@ -53,8 +46,9 @@ public class ControllerGame {
 
         while (applicationStarted) {
             char choice = view.getUserInput();
-            if (choice == '1' && table.checkIfDeckIsEven()) {
-                table.getPlayerOne().getTopCard().cardToString();
+            
+            if (choice == '1' && table.checkIfDeckIsEven()) {//add condition if listOfPlayer is empty
+                currentPlayer.getTopCard().cardToString();//get card of second Player
                 Card playerOneCard = table.getPlayerOne().getTopCard();
                 Card playerTwoCard = table.getPlayerTwo().getTopCard();
                 view.printText("Please select your attribute:");
@@ -64,7 +58,7 @@ public class ControllerGame {
                     view.printText("Player Two wins");
                     table.getPlayerTwo().addCardToTheBottom(playerOneCard);
                     table.getPlayerTwo().addCardToTheBottom(playerTwoCard);
-                    if (!table.isDeckEmpty()) {
+                    if (!table.isDrawedCardsEmpty()) {
                         table.addCardToTheBottom(table.getDrawedCards(), table.getPlayerTwo());
                         table.clearDrawCards();
                     }
@@ -72,14 +66,17 @@ public class ControllerGame {
                     view.printText("Player One wins");
                     table.getPlayerOne().addCardToTheBottom(playerTwoCard);
                     table.getPlayerOne().addCardToTheBottom(playerOneCard);
-                    if (!table.isDeckEmpty()) {
+                    if (!table.isDrawedCardsEmpty()) {
                         table.addCardToTheBottom(table.getDrawedCards(), table.getPlayerOne());
                         table.clearDrawCards();
-
+                    }
+                } else if (compareResult == 0){
+                    view.printText("It's a draw!");
+                    table.addCardToDrawedCards(playerOneCard);
+                    table.addCardToDrawedCards(playerTwoCard);
                 }
-
-                
-
+            }
+            switchPlayer();
             } else if (choice == '2') {
 
             } else if (choice == '3') {
@@ -88,4 +85,4 @@ public class ControllerGame {
             }
         }
     }
-}
+
