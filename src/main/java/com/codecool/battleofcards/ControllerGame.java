@@ -5,6 +5,7 @@ public class ControllerGame {
     Table table = new Table();
     Card card;
     Player currentPlayer = table.getPlayerOne();
+    Player otherPlayer = table.getPlayerTwo();
 
     private StatEnum getValidatedInput() {
 
@@ -32,8 +33,10 @@ public class ControllerGame {
     public void switchPlayer() {
         if (currentPlayer.equals(table.getPlayerOne())) {
             currentPlayer = table.getPlayerTwo();
+            otherPlayer = table.getPlayerOne();
         } else {
             currentPlayer = table.getPlayerOne();
+            otherPlayer = table.getPlayerTwo();
         }
     }
 
@@ -49,25 +52,25 @@ public class ControllerGame {
             
             if (choice == '1' && table.checkIfDeckIsEven()) {//add condition if listOfPlayer is empty
                 currentPlayer.getTopCard().cardToString();//get card of second Player
-                Card playerOneCard = table.getPlayerOne().getTopCard();
-                Card playerTwoCard = table.getPlayerTwo().getTopCard();
+                Card playerOneCard = currentPlayer.getTopCard();
+                Card playerTwoCard = otherPlayer.getTopCard();
                 view.printText("Please select your attribute:");
                 StatEnum input = getValidatedInput();
                 int compareResult = table.compareStats(playerOneCard, playerTwoCard, input);
                 if (compareResult < 0) {
                     view.printText("Player Two wins");
-                    table.getPlayerTwo().addCardToTheBottom(playerOneCard);
-                    table.getPlayerTwo().addCardToTheBottom(playerTwoCard);
+                    otherPlayer.addCardToTheBottom(playerOneCard);
+                    otherPlayer.addCardToTheBottom(playerTwoCard);
                     if (!table.isDrawedCardsEmpty()) {
-                        table.addCardToTheBottom(table.getDrawedCards(), table.getPlayerTwo());
+                        table.addCardToTheBottom(table.getDrawedCards(), otherPlayer);
                         table.clearDrawCards();
                     }
                 } else if (compareResult > 0) {
                     view.printText("Player One wins");
-                    table.getPlayerOne().addCardToTheBottom(playerTwoCard);
-                    table.getPlayerOne().addCardToTheBottom(playerOneCard);
+                    currentPlayer.addCardToTheBottom(playerTwoCard);
+                    currentPlayer.addCardToTheBottom(playerOneCard);
                     if (!table.isDrawedCardsEmpty()) {
-                        table.addCardToTheBottom(table.getDrawedCards(), table.getPlayerOne());
+                        table.addCardToTheBottom(table.getDrawedCards(), currentPlayer);
                         table.clearDrawCards();
                     }
                 } else if (compareResult == 0){
@@ -75,8 +78,7 @@ public class ControllerGame {
                     table.addCardToDrawedCards(playerOneCard);
                     table.addCardToDrawedCards(playerTwoCard);
                 }
-            }
-            switchPlayer();
+                switchPlayer();
             } else if (choice == '2') {
 
             } else if (choice == '3') {
@@ -85,4 +87,5 @@ public class ControllerGame {
             }
         }
     }
+}
 
