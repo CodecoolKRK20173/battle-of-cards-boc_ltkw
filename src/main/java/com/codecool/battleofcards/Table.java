@@ -2,13 +2,11 @@ package com.codecool.battleofcards;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Comparator;
 
 public class Table {
 
     private Player playerOne;
     private Player playerTwo;
-    private Deck deck;
     private ArrayList<Card> drawedCards;
     private ArrayList<Card> currentlyPlayedCards;
     private Dealer dealer;
@@ -21,9 +19,11 @@ public class Table {
         dealer = new Dealer();
         dealCardsToPlayers();
     }
+    
     public Player getPlayerOne(){
         return playerOne;
     }
+
     public Player getPlayerTwo (){
         return playerTwo;
     }
@@ -45,8 +45,6 @@ public class Table {
                 return comparator.compare(playerOneCard.getSpeed(), playerTwoCard.getSpeed());
             default:
                 return 0;
-                
-
         }
     }
 
@@ -63,35 +61,8 @@ public class Table {
         
     }
 
-    public boolean isDrawedCardsEmpty() {
-        if (drawedCards.isEmpty()) {
-            return true;
-        }
-        return false;
-    }
-
-    public ArrayList<Card> getDrawedCards() {
-        return drawedCards;
-    }
-
-    public void clearDrawCards() {
-        drawedCards.clear();
-    }
-
-    public void addCardToDrawedCards(Card card) {
-        drawedCards.add(card);
-    }
-
-    public ArrayList<Card> getCurrentlyPlayedCards() {
-        return currentlyPlayedCards;
-    }
-
     public void addToCurrentlyPlayedCards(Card card) {
         currentlyPlayedCards.add(card);
-    }
-
-    public void clearCurrentlyPlayedCards() {
-        currentlyPlayedCards.clear();
     }
 
     public void giveCardsToWinner(Player player) {
