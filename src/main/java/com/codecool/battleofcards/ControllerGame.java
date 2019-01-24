@@ -59,9 +59,9 @@ public class ControllerGame {
                 String playerTwoName = view.getUserString();
                 otherPlayer.setPlayerName(playerTwoName);
 
-                view.clearScreen();
+                //view.clearScreen();
                 while(gameIsPlayed) {
-
+                    view.clearScreen();
                     System.out.println("You have " + currentPlayer.getCards().size() + " cards.");
                     System.out.println("Opponent has " + otherPlayer.getCards().size() + " cards.");
                     view.printText(currentPlayer.getTopCard().cardToString());
@@ -72,28 +72,24 @@ public class ControllerGame {
                     view.printText("Please select your attribute:");
                     StatEnum input = getValidatedInput();
                     int compareResult = table.compareStats(playerOneCard, playerTwoCard, input);
+                    view.clearScreen();
                     if (compareResult < 0) {
-                        view.clearScreen();
                         view.printText(currentPlayer.getPlayerName() + " lost!");
                         view.printText("Opponent's " + playerTwoCard.getName() + " has " + playerTwoCard.getStatByEnum(input) + " " + input);
                         view.printText("Your " + playerOneCard.getName() + " has " + playerOneCard.getStatByEnum(input) + " " + input);
-                        holdForMilisecond(5000);
                         table.giveCardsToWinner(otherPlayer);
                     } else if (compareResult > 0) {
-                        view.clearScreen();
                         view.printText(currentPlayer.getPlayerName() + " won!");
                         view.printText("Opponent's " + playerTwoCard.getName() + " has " + playerTwoCard.getStatByEnum(input) + " " + input);
                         view.printText("Your " + playerOneCard.getName() + " has " + playerOneCard.getStatByEnum(input) + " " + input);
-                        holdForMilisecond(5000);
                         table.giveCardsToWinner(currentPlayer);
                     } else if (compareResult == 0) {
-                        view.clearScreen();
                         view.printText("It's a draw!");
                         view.printText("Opponent's " + playerTwoCard.getName() + " has " + playerTwoCard.getStatByEnum(input) + " " + input);
                         view.printText("Your " + playerOneCard.getName() + " has " + playerOneCard.getStatByEnum(input) + " " + input);
-                        holdForMilisecond(5000);
                         table.addCurrentlyPlayedCardsToDrawedCards();
                     }
+                    holdForMilisecond(2000);
                     int gameOver = checkIfGameOver();
                     displayWinMessage(gameOver);
                     switchPlayer();
