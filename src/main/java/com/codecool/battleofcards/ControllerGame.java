@@ -76,6 +76,7 @@ public class ControllerGame {
                     table.addCardToDrawedCards(playerTwoCard);
                 }
 
+
                 switchPlayer();
             } else if (choice == '2') {
 
