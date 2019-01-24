@@ -48,11 +48,10 @@ public class ControllerGame {
     public void run() {
         View view = new View();
         view.clearScreen();
-        view.printText("Welcome to Card battle: Pokemon! what you want to do?");
         view.displayMenu();
         while (isRunning) {
             char choice = view.getUserInput();
-            if (choice == '1' && table.checkIfDeckIsEven()) {//add condition if listOfPlayer is empty
+            if (choice == '1' && table.checkIfDeckIsEven()) {
                 view.clearScreen();
                 while(gameIsPlayed) {
                     System.out.println("You have " + currentPlayer.getCards().size() + " cards.");
@@ -87,24 +86,13 @@ public class ControllerGame {
                     view.clearScreen();
                 }
             } else if (choice == '2') {
-                view.printText("Yelizareta Chernykh\n" +
-                            "Wojtek haruza\n"+
-                            "Tatiana Slonimskaia\n"+
-                            "Kamil Bracki\n");
-                view.printText("(1) Back to menu\n" +
-                                        "(2) Exit");
+                view.displayAuthors();
                 char backChoice = view.getUserInput();
-
                 if (backChoice == '1'){
-                    view.displayMenu();
-                    continue;
+                    playGame();
                 } else if (backChoice == '2'){
                     System.exit(0);
-
                 }
-
-
-
             } else if (choice == '3') {
                 System.exit(0);
 

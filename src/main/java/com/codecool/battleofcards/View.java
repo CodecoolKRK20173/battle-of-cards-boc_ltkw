@@ -121,4 +121,14 @@ public class View {
         }
         printText(logo);
     }
+    public void displayAuthors() {
+        clearScreen();
+        printLogo();
+        printText("Yelizareta Chernykh\n" +
+                                "Wojtek Charuza\n"+
+                                "Tatiana Slonimskaia\n"+
+                                "Kamil Bracki\n");
+        printText("1. Back to menu\n" +
+                                            "2. Exit");
+    }
 }
