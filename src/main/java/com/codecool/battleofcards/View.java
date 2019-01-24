@@ -6,28 +6,6 @@ import java.io.FileNotFoundException;
 
 public class View {
 
-    
-
-    public void displayCard (Card card) {
-        card.toString();
-        String leftAlignFormat =
-                "+====+=====================+\n"+
-                        "|@@@@|                     | \n"+
-                        "|@@@@| name : %-5s        | \n"+ "+====+=====================+\n"+
-                        "|####| 1.attack     : %-5s | \n"+
-                        "|####|                     | \n"+
-                        "|####| 2.defence    : %-5s | \n"+
-                        "|####|                     | \n"+
-                        "|####| 3.HP         : %-5s | \n"+
-                        "|####|                     | \n"+
-                        "|####| 4.speed      : %-5s | \n"+
-                        "|####|                     | \n"+
-                        "+====+=====================+%n";
-        System.out.format(leftAlignFormat, card.toString());
-
-
-    }
-
     public char getUserInput() {
         Scanner scanner = new Scanner(System.in);
         return scanner.next().charAt(0);
