@@ -75,8 +75,7 @@ public class ControllerGame {
                     table.addCardToDrawedCards(playerOneCard);
                     table.addCardToDrawedCards(playerTwoCard);
                 }
-            }
-            switchPlayer();
+                switchPlayer();
             } else if (choice == '2') {
 
             } else if (choice == '3') {
@@ -85,4 +84,5 @@ public class ControllerGame {
             }
         }
     }
+}
 
