@@ -5,6 +5,7 @@
 # Target folder of maven
 
 target/
+test/
 
 # Miscellaneous
 
