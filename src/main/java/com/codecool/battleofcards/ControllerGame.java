@@ -48,7 +48,7 @@ public class ControllerGame {
             char choice = view.getUserInput();
             
             if (choice == '1' && table.checkIfDeckIsEven()) {//add condition if listOfPlayer is empty
-                currentPlayer.getTopCard().cardToString();//get card of second Player
+                System.out.println(currentPlayer.getTopCard().cardToString());//get card of second Player
                 Card playerOneCard = table.getPlayerOne().getTopCard();
                 Card playerTwoCard = table.getPlayerTwo().getTopCard();
                 view.printText("Please select your attribute:");
