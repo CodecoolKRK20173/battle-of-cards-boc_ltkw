@@ -34,6 +34,7 @@ public class ControllerGame {
         return null;
     }
 
+
     public void switchPlayer() {
         if (currentPlayer.equals(table.getPlayerOne())) {
             currentPlayer = table.getPlayerTwo();
@@ -86,6 +87,22 @@ public class ControllerGame {
                     view.clearScreen();
                 }
             } else if (choice == '2') {
+                view.printText("Yelizareta Chernykh\n" +
+                            "Wojtek haruza\n"+
+                            "Tatiana Slonimskaia\n"+
+                            "Kamil Bracki\n");
+                view.printText("(1) Back to menu\n" +
+                                        "(2) Exit");
+                char backChoice = view.getUserInput();
+
+                if (backChoice == '1'){
+                    view.displayMenu();
+                    continue;
+                } else if (backChoice == '2'){
+                    System.exit(0);
+
+                }
+
 
 
             } else if (choice == '3') {
