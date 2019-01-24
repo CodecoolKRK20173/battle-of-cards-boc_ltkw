@@ -1,10 +1,10 @@
-package com.codecool.battleofcards; // FIXME: change when Dealer is moved to battleofcards.controller;
+package com.codecool.battleofcards.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-import com.codecool.battleofcards.Card; // FIXME: change when Card is moved to model.Card;
-import com.codecool.battleofcards.Deck; // FIXME: changle when Deck is moved to model.Deck;
+import com.codecool.battleofcards.model.Card;
+import com.codecool.battleofcards.model.Deck;
 
 public class Dealer {
 

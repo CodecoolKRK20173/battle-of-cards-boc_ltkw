@@ -1,4 +1,4 @@
-package com.codecool.battleofcards;
+package com.codecool.battleofcards.view;
 
 import java.util.Scanner;
 import java.io.File;

@@ -1,11 +1,12 @@
-package com.codecool.battleofcards;
+package com.codecool.battleofcards.dao;
 
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+
+import com.codecool.battleofcards.model.Card;
 
 public class Dao {
     private Card card;

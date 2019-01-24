@@ -1,4 +1,4 @@
-package com.codecool.battleofcards;
+package com.codecool.battleofcards.model;
 
 import java.util.Comparator;
 

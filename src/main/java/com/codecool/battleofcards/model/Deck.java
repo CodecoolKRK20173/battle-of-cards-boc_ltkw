@@ -1,6 +1,8 @@
-package com.codecool.battleofcards;
+package com.codecool.battleofcards.model;
 
 import java.util.ArrayList;
+
+import com.codecool.battleofcards.dao.Dao;
 
 public class Deck {
 

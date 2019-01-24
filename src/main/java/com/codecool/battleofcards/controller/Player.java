@@ -1,6 +1,8 @@
-package com.codecool.battleofcards;
+package com.codecool.battleofcards.controller;
 
 import java.util.ArrayList;
+
+import com.codecool.battleofcards.model.Card;
 
 public class Player {
 

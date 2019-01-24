@@ -1,6 +1,12 @@
-package com.codecool.battleofcards;
+package com.codecool.battleofcards.controller;
 
 import java.util.concurrent.TimeUnit;
+
+import com.codecool.battleofcards.model.Card;
+import com.codecool.battleofcards.controller.Player;
+import com.codecool.battleofcards.model.StatEnum;
+import com.codecool.battleofcards.service.Table;
+import com.codecool.battleofcards.view.View;
 
 public class ControllerGame {
     View view = new View();

@@ -1,4 +1,4 @@
-package com.codecool.battleofcards;
+package com.codecool.battleofcards.model;
 
 public class Card {
     private int id;
