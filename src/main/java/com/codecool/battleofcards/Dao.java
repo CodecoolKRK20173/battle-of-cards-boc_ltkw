@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 
 public class Dao {
     private Card card;
-    private List<Card> cards;
+    private ArrayList<Card> cards;
     private ArrayList<ArrayList<String>> cardInformation = new ArrayList<ArrayList<String>>();
     private String filePath = "Pokemons.csv";
 
@@ -54,7 +54,7 @@ public class Dao {
         } 
     }
 
-    public List<Card> getCards() {
+    public ArrayList<Card> getCards() {
         addCards();
         return cards;
     }

@@ -9,8 +9,8 @@ public class Table {
     private Player playerOne;
     private Player playerTwo;
     private Deck deck;
-    private List<Card> drawedCards;
-    private List<Card> currentlyPlayedCards;
+    private ArrayList<Card> drawedCards;
+    private ArrayList<Card> currentlyPlayedCards;
     private Dealer dealer;
 
     public Table() {
@@ -70,7 +70,7 @@ public class Table {
         return false;
     }
 
-    public List<Card> getDrawedCards() {
+    public ArrayList<Card> getDrawedCards() {
         return drawedCards;
     }
 
@@ -80,5 +80,32 @@ public class Table {
 
     public void addCardToDrawedCards(Card card) {
         drawedCards.add(card);
+    }
+
+    public ArrayList<Card> getCurrentlyPlayedCards() {
+        return currentlyPlayedCards;
+    }
+
+    public void addToCurrentlyPlayedCards(Card card) {
+        currentlyPlayedCards.add(card);
+    }
+
+    public void clearCurrentlyPlayedCards() {
+        currentlyPlayedCards.clear();
+    }
+
+    public void giveCardsToWinner(Player player) {
+        player.addListOfCardsToBottom(currentlyPlayedCards);
+        currentlyPlayedCards.clear();
+        if (drawedCards.size() > 0) {
+            player.addListOfCardsToBottom(drawedCards);
+            drawedCards.clear();
+        }
+    }
+
+    public void addCurrentlyPlayedCardsToDrawedCards() {
+        drawedCards.add(currentlyPlayedCards.get(0));
+        drawedCards.add(currentlyPlayedCards.get(1));
+        currentlyPlayedCards.clear();
     }
 }

@@ -10,8 +10,8 @@ import com.codecool.battleofcards.Deck; // FIXME: changle when Deck is moved to 
 public class Dealer {
 
     Deck deck = new Deck();
-    private List<Card> playerOneHand;
-    private List<Card> playerTwoHand;
+    private ArrayList<Card> playerOneHand;
+    private ArrayList<Card> playerTwoHand;
 
     public Dealer() {
         playerOneHand = new ArrayList<Card>();
@@ -19,12 +19,12 @@ public class Dealer {
     }
 
     public void dealCards() {
-        List<Card> shuffledDeck = getShuffledDeck();
+        ArrayList<Card> shuffledDeck = getShuffledDeck();
         int startPoint = 0;
         int midPoint = shuffledDeck.size() / 2;
         int endPoint = shuffledDeck.size();
-        playerOneHand = shuffledDeck.subList(startPoint, midPoint);
-        playerTwoHand = shuffledDeck.subList(midPoint, endPoint);
+        playerOneHand = new ArrayList<Card>(shuffledDeck.subList(startPoint, midPoint));
+        playerTwoHand = new ArrayList<Card>(shuffledDeck.subList(midPoint, endPoint));
     }
 
     /**
@@ -32,8 +32,8 @@ public class Dealer {
      * 
      * @return deck shuffled randomly
      */
-    private List<Card> getShuffledDeck() {
-        List<Card> arrangedDeck = deck.getCards();
+    private ArrayList<Card> getShuffledDeck() {
+        ArrayList<Card> arrangedDeck = deck.getCards();
         Collections.shuffle(arrangedDeck);
         return arrangedDeck;
     }
@@ -47,18 +47,18 @@ public class Dealer {
      * @return boolean
      */
     public boolean isDeckSizeEven() {
-        List<Card> shuffledDeck = getShuffledDeck();
+        ArrayList<Card> shuffledDeck = getShuffledDeck();
         if (shuffledDeck.size() % 2 == 0) {
             return true;
         }
         return false;
     }
 
-    public List<Card> getPlayerOneHand() {
+    public ArrayList<Card> getPlayerOneHand() {
         return playerOneHand;
     }
 
-    public List<Card> getPlayerTwoHand() {
+    public ArrayList<Card> getPlayerTwoHand() {
         return playerTwoHand;
     }
 }

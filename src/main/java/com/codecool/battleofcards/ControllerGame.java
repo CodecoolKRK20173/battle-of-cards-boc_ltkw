@@ -1,5 +1,7 @@
 package com.codecool.battleofcards;
 
+import java.util.concurrent.TimeUnit;
+
 public class ControllerGame {
     View view = new View();
     Table table = new Table();
@@ -51,36 +53,36 @@ public class ControllerGame {
         while (applicationStarted) {
             char choice = view.getUserInput();
             if (choice == '1' && table.checkIfDeckIsEven()) {//add condition if listOfPlayer is empty
+                view.clearScreen();
                 while(gameIsPlayed) {
-                    view.printText(currentPlayer.
-                    view.printText(currentPlayer.getTopCard().cardToString());//get card of second Player
-                    Card playerOneCard = currentPlayer.getTopCard();
-                    Card playerTwoCard = otherPlayer.getTopCard();
+                    System.out.println("You have " + currentPlayer.getCards().size() + " cards.");
+                    System.out.println("Opponent has " + otherPlayer.getCards().size() + " cards.");
+                    view.printText(currentPlayer.getTopCard().cardToString());
+                    table.addToCurrentlyPlayedCards(currentPlayer.getTopCard());
+                    table.addToCurrentlyPlayedCards(otherPlayer.getTopCard());
+                    Card playerOneCard = currentPlayer.getTopCardAndRemoveIt();
+                    Card playerTwoCard = otherPlayer.getTopCardAndRemoveIt();
                     view.printText("Please select your attribute:");
                     StatEnum input = getValidatedInput();
                     int compareResult = table.compareStats(playerOneCard, playerTwoCard, input);
                     if (compareResult < 0) {
-                        view.printText("Player Two wins");
-                        otherPlayer.addCardToTheBottom(playerOneCard);
-                        otherPlayer.addCardToTheBottom(playerTwoCard);
-                        if (!table.isDrawedCardsEmpty()) {
-                            table.addCardToTheBottom(table.getDrawedCards(), otherPlayer);
-                            table.clearDrawCards();
-                        }
+                        view.clearScreen();
+                        view.printText("You lost!");
+                        holdForMilisecond(2000);
+                        table.giveCardsToWinner(otherPlayer);
                     } else if (compareResult > 0) {
-                        view.printText("Player One wins");
-                        currentPlayer.addCardToTheBottom(playerTwoCard);
-                        currentPlayer.addCardToTheBottom(playerOneCard);
-                        if (!table.isDrawedCardsEmpty()) {
-                            table.addCardToTheBottom(table.getDrawedCards(), currentPlayer);
-                            table.clearDrawCards();
-                        }
+                        view.clearScreen();
+                        view.printText("You won!");
+                        holdForMilisecond(2000);
+                        table.giveCardsToWinner(currentPlayer);
                     } else if (compareResult == 0) {
+                        view.clearScreen();
                         view.printText("It's a draw!");
-                        table.addCardToDrawedCards(playerOneCard);
-                        table.addCardToDrawedCards(playerTwoCard);
+                        holdForMilisecond(2000);
+                        table.addCurrentlyPlayedCardsToDrawedCards();
                     }
                     switchPlayer();
+                    view.clearScreen();
                 }
             } else if (choice == '2') {
 
@@ -91,5 +93,13 @@ public class ControllerGame {
             }
         }
     }
+
+    private static void holdForMilisecond(int timeSleep) {
+		try {
+			TimeUnit.MILLISECONDS.sleep(timeSleep);
+		} catch (InterruptedException ex) {
+			System.out.println();
+		}
+	}
 }
 
