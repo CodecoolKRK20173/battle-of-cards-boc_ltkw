@@ -33,6 +33,10 @@ public class View {
         return scanner.next().charAt(0);
 
     }
+    public String getUserString() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine().toString();
+    }
 
 
     public void displayMenu() {

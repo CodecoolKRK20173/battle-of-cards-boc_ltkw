@@ -51,8 +51,17 @@ public class ControllerGame {
         while (isRunning) {
             char choice = view.getUserInput();
             if (choice == '1' && table.checkIfDeckIsEven()) {
+
+                view.printText("Set Player 1 name");
+                String playerOneName = view.getUserString();
+                currentPlayer.setPlayerName(playerOneName);
+                view.printText("Set Player 2 name");
+                String playerTwoName = view.getUserString();
+                otherPlayer.setPlayerName(playerTwoName);
+
                 view.clearScreen();
                 while(gameIsPlayed) {
+
                     System.out.println("You have " + currentPlayer.getCards().size() + " cards.");
                     System.out.println("Opponent has " + otherPlayer.getCards().size() + " cards.");
                     view.printText(currentPlayer.getTopCard().cardToString());
@@ -65,14 +74,14 @@ public class ControllerGame {
                     int compareResult = table.compareStats(playerOneCard, playerTwoCard, input);
                     if (compareResult < 0) {
                         view.clearScreen();
-                        view.printText("You lost!");
+                        view.printText(currentPlayer.getPlayerName() + " lost!");
                         view.printText("Opponent's " + playerTwoCard.getName() + " has " + playerTwoCard.getStatByEnum(input) + " " + input);
                         view.printText("Your " + playerOneCard.getName() + " has " + playerOneCard.getStatByEnum(input) + " " + input);
                         holdForMilisecond(5000);
                         table.giveCardsToWinner(otherPlayer);
                     } else if (compareResult > 0) {
                         view.clearScreen();
-                        view.printText("You won!");
+                        view.printText(currentPlayer.getPlayerName() + " won!");
                         view.printText("Opponent's " + playerTwoCard.getName() + " has " + playerTwoCard.getStatByEnum(input) + " " + input);
                         view.printText("Your " + playerOneCard.getName() + " has " + playerOneCard.getStatByEnum(input) + " " + input);
                         holdForMilisecond(5000);
