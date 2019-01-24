@@ -44,6 +44,11 @@ public class ControllerGame {
         }
     }
 
+    public void getInformatiron(StatEnum statEnum, Card playerOneCard, Card playerTwoCard) {
+        view.printText("Opponent's " + playerTwoCard.getName() + " has " + playerTwoCard.getStatByEnum(statEnum) + " " + statEnum);
+        view.printText("Your " + playerOneCard.getName() + " has " + playerOneCard.getStatByEnum(statEnum) + " " + statEnum);
+    }
+
     public void run() {
         View view = new View();
         view.clearScreen();
@@ -59,7 +64,6 @@ public class ControllerGame {
                 String playerTwoName = view.getUserString();
                 otherPlayer.setPlayerName(playerTwoName);
 
-                //view.clearScreen();
                 while(gameIsPlayed) {
                     view.clearScreen();
                     System.out.println("You have " + currentPlayer.getCards().size() + " cards.");
@@ -75,21 +79,18 @@ public class ControllerGame {
                     view.clearScreen();
                     if (compareResult < 0) {
                         view.printText(currentPlayer.getPlayerName() + " lost!");
-                        view.printText("Opponent's " + playerTwoCard.getName() + " has " + playerTwoCard.getStatByEnum(input) + " " + input);
-                        view.printText("Your " + playerOneCard.getName() + " has " + playerOneCard.getStatByEnum(input) + " " + input);
+                        getInformatiron(input, playerOneCard, playerTwoCard);            
                         table.giveCardsToWinner(otherPlayer);
                     } else if (compareResult > 0) {
                         view.printText(currentPlayer.getPlayerName() + " won!");
-                        view.printText("Opponent's " + playerTwoCard.getName() + " has " + playerTwoCard.getStatByEnum(input) + " " + input);
-                        view.printText("Your " + playerOneCard.getName() + " has " + playerOneCard.getStatByEnum(input) + " " + input);
+                        getInformatiron(input, playerOneCard, playerTwoCard);                        
                         table.giveCardsToWinner(currentPlayer);
                     } else if (compareResult == 0) {
                         view.printText("It's a draw!");
-                        view.printText("Opponent's " + playerTwoCard.getName() + " has " + playerTwoCard.getStatByEnum(input) + " " + input);
-                        view.printText("Your " + playerOneCard.getName() + " has " + playerOneCard.getStatByEnum(input) + " " + input);
+                        getInformatiron(input, playerOneCard, playerTwoCard);                        
                         table.addCurrentlyPlayedCardsToDrawedCards();
                     }
-                    holdForMilisecond(2000);
+                    holdForMilisecond(3000);
                     int gameOver = checkIfGameOver();
                     displayWinMessage(gameOver);
                     switchPlayer();

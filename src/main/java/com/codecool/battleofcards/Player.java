@@ -1,8 +1,6 @@
 package com.codecool.battleofcards;
 
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Player {
 
