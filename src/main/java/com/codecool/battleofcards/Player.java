@@ -7,13 +7,13 @@ import java.util.Collections;
 public class Player {
 
     private ArrayList<Card> cards;
+    private String playerName;
 
     public Player() {
         this.cards = new ArrayList<Card>();
     }
 
     public Card getTopCard() {
-        //Collections.synchronizedList(cards);
         return cards.get(0);
     }
 
@@ -50,5 +50,13 @@ public class Player {
         for(int i = 0; i < cardsToAdd.size(); i++) {
             cards.add(cardsToAdd.get(i));
         }
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String name) {
+        this.playerName = name;
     }
 }

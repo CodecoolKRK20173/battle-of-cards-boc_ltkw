@@ -59,4 +59,19 @@ public class Card {
 
 
     }
+    
+    public int getStatByEnum(StatEnum statEnum) {
+        switch (statEnum) {
+            case ATTACK:
+                return getAttack();
+            case DEFENSE:
+                return getdefense();
+            case HP:
+                return getHp();
+            case SPEED:
+                return getSpeed();
+            default:
+                return 0;
+        }
+    }
 }

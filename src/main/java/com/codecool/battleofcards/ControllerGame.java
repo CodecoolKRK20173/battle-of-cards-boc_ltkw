@@ -67,17 +67,23 @@ public class ControllerGame {
                     if (compareResult < 0) {
                         view.clearScreen();
                         view.printText("You lost!");
-                        holdForMilisecond(2000);
+                        view.printText("Opponent's " + playerTwoCard.getName() + " has " + playerTwoCard.getStatByEnum(input) + " " + input);
+                        view.printText("Your " + playerOneCard.getName() + " has " + playerOneCard.getStatByEnum(input) + " " + input);
+                        holdForMilisecond(5000);
                         table.giveCardsToWinner(otherPlayer);
                     } else if (compareResult > 0) {
                         view.clearScreen();
                         view.printText("You won!");
-                        holdForMilisecond(2000);
+                        view.printText("Opponent's " + playerTwoCard.getName() + " has " + playerTwoCard.getStatByEnum(input) + " " + input);
+                        view.printText("Your " + playerOneCard.getName() + " has " + playerOneCard.getStatByEnum(input) + " " + input);
+                        holdForMilisecond(5000);
                         table.giveCardsToWinner(currentPlayer);
                     } else if (compareResult == 0) {
                         view.clearScreen();
                         view.printText("It's a draw!");
-                        holdForMilisecond(2000);
+                        view.printText("Opponent's " + playerTwoCard.getName() + " has " + playerTwoCard.getStatByEnum(input) + " " + input);
+                        view.printText("Your " + playerOneCard.getName() + " has " + playerOneCard.getStatByEnum(input) + " " + input);
+                        holdForMilisecond(5000);
                         table.addCurrentlyPlayedCardsToDrawedCards();
                     }
                     int gameOver = checkIfGameOver();
