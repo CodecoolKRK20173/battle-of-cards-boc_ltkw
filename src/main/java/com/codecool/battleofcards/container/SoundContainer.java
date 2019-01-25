@@ -14,7 +14,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class SoundContainer {
     private Clip clip;
 
-    private void playSounds(String sound) {
+    private void loadSound(String sound) {
         try {
             FileInputStream inputStreamSound = new FileInputStream(sound);
             BufferedInputStream bufferedSound = new BufferedInputStream(inputStreamSound);
@@ -22,8 +22,6 @@ public class SoundContainer {
             clip = AudioSystem.getClip();
             AudioInputStream soundToPlay = AudioSystem.getAudioInputStream(bufferedSound);
             clip.open(soundToPlay);
-            clip.setFramePosition(0);
-            clip.start();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -38,34 +36,21 @@ public class SoundContainer {
             e.printStackTrace();
         }
     }
-    
-    private void clipLoop() {
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
-    }
-
-    public void playAutorsScreenMusic() {
-        playSounds("src/main/resources/sounds/authors_screen.wav");
-    }
 
     public void playBackgroundSound() {
-        playSounds("src/main/resources/sounds/background.wav");
-        clipLoop();
-    }
-
-    public void playWinSound() {
-        playSounds("src/main/resources/sounds/victory.wav");
-    }
-
-    public void playGameOverSound() {
-        playSounds("src/main/resources/sounds/game_over.wav");
-    }
-
-    public void playGoodBye() {
-        playSounds("src/main/resources/sounds/game_quit.wav");
+        loadSound("src/main/resources/sounds/background.wav");
+        clip.setFramePosition(0);
+        clip.start();
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
 
     public void stopClip() {
         clip.stop();
     }
 
+    public void playSound(String sound) {
+        loadSound(sound);
+        clip.setFramePosition(0);
+        clip.start();
+    }
 }

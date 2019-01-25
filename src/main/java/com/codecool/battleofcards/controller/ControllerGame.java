@@ -108,20 +108,20 @@ public class ControllerGame {
             } else if (choice == '2') {
                 sound.stopClip();
                 view.displayAuthors();
-                sound.playAutorsScreenMusic();
+                sound.playSound("src/main/resources/sounds/authors_screen.wav");;
                 char backChoice = view.getUserInput();
                 if (backChoice == '1') {
                     sound.stopClip();
                     playGame();
                 } else if (backChoice == '2') {
                     sound.stopClip();
-                    sound.playGoodBye();
+                    sound.playSound("src/main/resources/sounds/game_quit.wav");;
                     holdForMilisecond(9000);
                     System.exit(0);
                 }
             } else if (choice == '3') {
                 sound.stopClip();
-                sound.playGoodBye();
+                sound.playSound("src/main/resources/sounds/game_quit.wav");
                 holdForMilisecond(9000);
                 System.exit(0);
 
@@ -150,14 +150,14 @@ public class ControllerGame {
         switch (result) {
             case 1: 
                 sound.stopClip();
-                sound.playWinSound();
+                sound.playSound("src/main/resources/sounds/victory.wav");;
                 view.printWinState();
                 holdForMilisecond(5000);
                 playGame();
                 break;
             case 2:
                 sound.stopClip();
-                sound.playGameOverSound();
+                sound.playSound("src/main/resources/sounds/game_over.wav");
                 view.printGameOver();
                 holdForMilisecond(5000);
                 playGame();
