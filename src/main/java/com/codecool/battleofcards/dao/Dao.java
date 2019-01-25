@@ -2,6 +2,7 @@ package com.codecool.battleofcards.dao;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +11,7 @@ import com.codecool.battleofcards.model.Card;
 
 public class Dao {
     private Card card;
-    private ArrayList<Card> cards;
+    private List<Card> cards;
     private ArrayList<ArrayList<String>> cardInformation = new ArrayList<ArrayList<String>>();
     private String filePath = "Pokemons.csv";
 
@@ -55,7 +56,7 @@ public class Dao {
         } 
     }
 
-    public ArrayList<Card> getCards() {
+    public List<Card> getCards() {
         addCards();
         return cards;
     }

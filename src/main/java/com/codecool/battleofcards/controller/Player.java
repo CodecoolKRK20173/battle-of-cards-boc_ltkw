@@ -1,12 +1,13 @@
 package com.codecool.battleofcards.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.codecool.battleofcards.model.Card;
 
 public class Player {
 
-    private ArrayList<Card> cards;
+    private List<Card> cards;
     private String playerName;
 
     public Player() {
@@ -38,15 +39,15 @@ public class Player {
         return true;
     }
 
-    public void setCards(ArrayList<Card> cards) {
+    public void setCards(List<Card> cards) {
         this.cards = cards;
     }
 
-    public ArrayList<Card> getCards() {
+    public List<Card> getCards() {
         return cards;
     }
 
-    public void addListOfCardsToBottom(ArrayList<Card> cardsToAdd) {
+    public void addListOfCardsToBottom(List<Card> cardsToAdd) {
         for(int i = 0; i < cardsToAdd.size(); i++) {
             cards.add(cardsToAdd.get(i));
         }

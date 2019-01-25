@@ -13,8 +13,8 @@ public class Table {
 
     private Player playerOne;
     private Player playerTwo;
-    private ArrayList<Card> drawedCards;
-    private ArrayList<Card> currentlyPlayedCards;
+    private List<Card> drawedCards;
+    private List<Card> currentlyPlayedCards;
     private Dealer dealer;
 
     public Table() {

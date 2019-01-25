@@ -2,6 +2,7 @@ package com.codecool.battleofcards.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import com.codecool.battleofcards.model.Card;
 import com.codecool.battleofcards.model.Deck;
@@ -9,8 +10,8 @@ import com.codecool.battleofcards.model.Deck;
 public class Dealer {
 
     Deck deck = new Deck();
-    private ArrayList<Card> playerOneHand;
-    private ArrayList<Card> playerTwoHand;
+    private List<Card> playerOneHand;
+    private List<Card> playerTwoHand;
 
     public Dealer() {
         playerOneHand = new ArrayList<Card>();
@@ -18,7 +19,7 @@ public class Dealer {
     }
 
     public void dealCards() {
-        ArrayList<Card> shuffledDeck = getShuffledDeck();
+        List<Card> shuffledDeck = getShuffledDeck();
         int startPoint = 0;
         int midPoint = shuffledDeck.size() / 2;
         int endPoint = shuffledDeck.size();
@@ -31,8 +32,8 @@ public class Dealer {
      * 
      * @return deck shuffled randomly
      */
-    private ArrayList<Card> getShuffledDeck() {
-        ArrayList<Card> arrangedDeck = deck.getCards();
+    private List<Card> getShuffledDeck() {
+        List<Card> arrangedDeck = deck.getCards();
         Collections.shuffle(arrangedDeck);
         return arrangedDeck;
     }
@@ -46,18 +47,18 @@ public class Dealer {
      * @return boolean
      */
     public boolean isDeckSizeEven() {
-        ArrayList<Card> shuffledDeck = getShuffledDeck();
+        List<Card> shuffledDeck = getShuffledDeck();
         if (shuffledDeck.size() % 2 == 0) {
             return true;
         }
         return false;
     }
 
-    public ArrayList<Card> getPlayerOneHand() {
+    public List<Card> getPlayerOneHand() {
         return playerOneHand;
     }
 
-    public ArrayList<Card> getPlayerTwoHand() {
+    public List<Card> getPlayerTwoHand() {
         return playerTwoHand;
     }
 }
