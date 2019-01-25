@@ -88,18 +88,18 @@ public class ControllerGame {
                     int compareResult = table.compareStats(playerOneCard, playerTwoCard, input);
                     view.clearScreen();
                     if (compareResult < 0) {
-                        view.printText("It's not ver effective...");
+                        view.printText("It's not very effective...");
                         view.printText("You lost!\n");
-                        getInformatiron(input, playerOneCard, playerTwoCard);            
+                        getInformatiron(input, playerOneCard, playerTwoCard);
                         table.giveCardsToWinner(otherPlayer);
                     } else if (compareResult > 0) {
                         view.printText("It's super effective!");
                         view.printText("You won!\n");
-                        getInformatiron(input, playerOneCard, playerTwoCard);                        
+                        getInformatiron(input, playerOneCard, playerTwoCard);
                         table.giveCardsToWinner(currentPlayer);
                     } else if (compareResult == 0) {
                         view.printText("It's a draw!\n");
-                        getInformatiron(input, playerOneCard, playerTwoCard);                        
+                        getInformatiron(input, playerOneCard, playerTwoCard);
                         table.addCurrentlyPlayedCardsToDrawedCards();
                     }
                     holdForMilisecond(3000);
