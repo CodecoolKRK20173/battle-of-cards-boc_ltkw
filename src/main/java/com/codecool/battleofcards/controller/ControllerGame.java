@@ -75,8 +75,9 @@ public class ControllerGame {
 
                 while(gameIsPlayed) {
                     view.clearScreen();
-                    System.out.println("You have " + currentPlayer.getCards().size() + " cards.");
-                    System.out.println("Opponent has " + otherPlayer.getCards().size() + " cards.");
+                    view.printText("Currently playing: " + currentPlayer.getPlayerName() + "\n");
+                    view.printText("You have " + currentPlayer.getCards().size() + " cards.");
+                    view.printText(otherPlayer.getPlayerName() + " has " + otherPlayer.getCards().size() + " cards.\n");
                     view.printText(currentPlayer.getTopCard().cardToString());
                     table.addToCurrentlyPlayedCards(currentPlayer.getTopCard());
                     table.addToCurrentlyPlayedCards(otherPlayer.getTopCard());
@@ -87,15 +88,17 @@ public class ControllerGame {
                     int compareResult = table.compareStats(playerOneCard, playerTwoCard, input);
                     view.clearScreen();
                     if (compareResult < 0) {
-                        view.printText(currentPlayer.getPlayerName() + " lost!");
+                        view.printText("It's not ver effective...");
+                        view.printText("You lost!\n");
                         getInformatiron(input, playerOneCard, playerTwoCard);            
                         table.giveCardsToWinner(otherPlayer);
                     } else if (compareResult > 0) {
-                        view.printText(currentPlayer.getPlayerName() + " won!");
+                        view.printText("It's super effective!");
+                        view.printText("You won!\n");
                         getInformatiron(input, playerOneCard, playerTwoCard);                        
                         table.giveCardsToWinner(currentPlayer);
                     } else if (compareResult == 0) {
-                        view.printText("It's a draw!");
+                        view.printText("It's a draw!\n");
                         getInformatiron(input, playerOneCard, playerTwoCard);                        
                         table.addCurrentlyPlayedCardsToDrawedCards();
                     }
