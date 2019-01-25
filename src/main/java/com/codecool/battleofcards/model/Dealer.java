@@ -8,18 +8,20 @@ import com.codecool.battleofcards.model.Card;
 import com.codecool.battleofcards.model.Deck;
 
 public class Dealer {
-
-    Deck deck = new Deck();
+    
+    Deck deck;
     private List<Card> playerOneHand;
     private List<Card> playerTwoHand;
 
     public Dealer() {
+        deck = new Deck();
         playerOneHand = new ArrayList<Card>();
         playerTwoHand = new ArrayList<Card>();
+        dealCards();
     }
 
-    public void dealCards() {
-        List<Card> shuffledDeck = getShuffledDeck();
+    private void dealCards() {
+    List<Card> shuffledDeck = getShuffledDeck();
         int startPoint = 0;
         int midPoint = shuffledDeck.size() / 2;
         int endPoint = shuffledDeck.size();

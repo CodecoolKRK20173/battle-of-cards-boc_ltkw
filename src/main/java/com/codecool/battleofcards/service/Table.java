@@ -55,7 +55,6 @@ public class Table {
     }
 
     public void dealCardsToPlayers() {
-        dealer.dealCards();
         playerOne.setCards(dealer.getPlayerOneHand());
         playerTwo.setCards(dealer.getPlayerTwoHand());
     }
