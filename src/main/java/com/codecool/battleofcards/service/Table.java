@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.codecool.battleofcards.model.Card;
-import com.codecool.battleofcards.controller.Dealer;
+import com.codecool.battleofcards.model.Dealer;
 import com.codecool.battleofcards.model.StatComparator;
 import com.codecool.battleofcards.model.StatEnum;
 import com.codecool.battleofcards.controller.Player;

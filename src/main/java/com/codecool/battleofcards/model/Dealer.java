@@ -1,4 +1,4 @@
-package com.codecool.battleofcards.controller;
+package com.codecool.battleofcards.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
