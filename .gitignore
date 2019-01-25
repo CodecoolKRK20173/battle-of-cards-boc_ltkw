@@ -2,7 +2,7 @@
 
 *.class
 
-# Target folder of maven
+# Maven folders
 
 target/
 test/
@@ -13,6 +13,7 @@ test/
 *.classpath
 *.project
 *.pdf
+*.iml
 
 *.vscode/
-
+*.idea/
